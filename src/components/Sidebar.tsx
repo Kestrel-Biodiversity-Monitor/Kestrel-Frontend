@@ -63,11 +63,6 @@ const ExtraIcons = {
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
     ),
-    map: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" /><line x1="8" y1="2" x2="8" y2="18" /><line x1="16" y1="6" x2="16" y2="22" />
-        </svg>
-    ),
     region: (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -86,19 +81,57 @@ const ExtraIcons = {
             <line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
         </svg>
     ),
+    survey: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+        </svg>
+    ),
+    conservation: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+    ),
+    map: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" /><line x1="8" y1="2" x2="8" y2="18" /><line x1="16" y1="6" x2="16" y2="22" />
+        </svg>
+    ),
+    notification: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+    ),
+    users: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+    ),
+    settings: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </svg>
+    ),
 };
 
 const NAV = [
     { href: "/dashboard", icon: Icons.dashboard, label: "Dashboard", roles: ["user", "officer", "admin"] },
-    { href: "/documents", icon: ExtraIcons.document, label: "Documents", roles: ["user", "officer", "admin"] },
+    { href: "/map", icon: ExtraIcons.map, label: "Sightings Map", roles: ["user", "officer", "admin"] },
     { href: "/report", icon: Icons.report, label: "Submit Report", roles: ["user", "officer", "admin"] },
-    { href: "/regions", icon: ExtraIcons.region, label: "Regions", roles: ["officer", "admin"] },
     { href: "/alerts", icon: ExtraIcons.alert, label: "Alerts", roles: ["user", "officer", "admin"] },
     { href: "/anomalies", icon: ExtraIcons.anomaly, label: "Anomalies", roles: ["officer", "admin"] },
-    { href: "/officer", icon: ExtraIcons.officer, label: "Officer Panel", roles: ["officer", "admin"] },
+    { href: "/surveys", icon: ExtraIcons.survey, label: "Surveys", roles: ["officer", "admin"] },
+    { href: "/regions", icon: ExtraIcons.region, label: "Regions", roles: ["officer", "admin"] },
+    { href: "/conservation", icon: ExtraIcons.conservation, label: "Conservation Zones", roles: ["officer", "admin"] },
+    { href: "/documents", icon: ExtraIcons.document, label: "Documents", roles: ["user", "officer", "admin"] },
     { href: "/analytics", icon: Icons.analytics, label: "Analytics", roles: ["user", "officer", "admin"] },
     { href: "/forum", icon: Icons.forum, label: "Community", roles: ["user", "officer", "admin"] },
+    { href: "/notifications", icon: ExtraIcons.notification, label: "Notifications", roles: ["user", "officer", "admin"] },
+    { href: "/users", icon: ExtraIcons.users, label: "User Directory", roles: ["officer", "admin"] },
+    { href: "/officer", icon: ExtraIcons.officer, label: "Officer Panel", roles: ["officer", "admin"] },
     { href: "/admin", icon: Icons.admin, label: "Admin Panel", roles: ["admin"] },
+    { href: "/settings", icon: ExtraIcons.settings, label: "Settings", roles: ["user", "officer", "admin"] },
     { href: "/profile", icon: Icons.profile, label: "Profile", roles: ["user", "officer", "admin"] },
 ];
 
