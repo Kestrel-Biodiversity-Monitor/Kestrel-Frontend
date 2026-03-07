@@ -62,13 +62,41 @@ export default function HeatmapPage() {
     const [riskLevel, setRiskLevel] = useState("");
     const [center] = useState<[number, number]>([20, 0]); // Default world center
     const [zoom] = useState(2);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+        loadHeatmap();
+    }, []);
 
     const loadHeatmap = async () => {
         setLoading(true);
         try {
             const params: any = {};
             if (startDate) params.startDate = startDate;
-            if (endDate) params.endDate = endDate;
+      
+
+    // Prevent SSR render of map
+    if (!isMounted) {
+        return (
+            <ProtectedRoute>
+                <div className="app-shell">
+                    <Sidebar />
+                    <div className="main-content">
+                        <div className="topbar">
+                            <div>
+                                <div className="topbar-title">🗺️ Species Heatmap</div>
+                                <div className="topbar-subtitle">Interactive geographical distribution visualization</div>
+                            </div>
+                        </div>
+                        <div className="page-wrapper" style={{ padding: 0, height: "calc(100vh - 70px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <p style={{ color: "#6b7280" }}>Loading map...</p>
+                        </div>
+                    </div>
+                </div>
+            </ProtectedRoute>
+        );
+    }      if (endDate) params.endDate = endDate;
             if (species) params.species = species;
             if (riskLevel) params.riskLevel = riskLevel;
 
@@ -80,17 +108,6 @@ export default function HeatmapPage() {
         } finally {
             setLoading(false);
         }
-    };
-
-    useEffect(() => {
-        loadHeatmap();
-    }, []);
-
-    const resetFilters = () => {
-        setStartDate("");
-        setEndDate("");
-        setSpecies("");
-        setRiskLevel("");
     };
 
     return (
@@ -149,20 +166,18 @@ export default function HeatmapPage() {
 
                         {/* Map Container */}
                         <div style={{ width: "100%", height: "100%" }}>
-                            {typeof window !== "undefined" && (
-                                <MapContainer
-                                    center={center}
-                                    zoom={zoom}
-                                    scrollWheelZoom={true}
-                                    style={{ width: "100%", height: "100%" }}
-                                >
-                                    <TileLayer
-                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                    />
-                                    {heatmapData.data.length > 0 && <HeatLayer points={heatmapData.data} />}
-                                </MapContainer>
-                            )}
+                            <MapContainer
+                                center={center}
+                                zoom={zoom}
+                                scrollWheelZoom={true}
+                                style={{ width: "100%", height: "100%" }}
+                            >
+                                <TileLayer
+                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                />
+                                {heatmapData.data.length > 0 && <HeatLayer points={heatmapData.data} />}
+                            </MapContainer>
                         </div>
                     </div>
                 </div>
