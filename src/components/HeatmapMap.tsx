@@ -44,7 +44,11 @@ function HeatLayer({ points }: { points: [number, number, number][] }) {
 }
 
 // ZoomListener component
-function ZoomListener({ onZoomChange }: { onZoomChange?: (zoom: number) => void }) {
+function ZoomListener({
+  onZoomChange,
+}: {
+  onZoomChange?: (zoom: number) => void;
+}) {
   const map = useMap();
 
   useEffect(() => {
