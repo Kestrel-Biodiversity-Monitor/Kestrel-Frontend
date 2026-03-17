@@ -1,12 +1,12 @@
-# 🦅 KESTREL – Frontend
+ 🦅 KESTREL – Frontend
 
-**Biodiversity Monitoring & Ecological Reporting Platform**
+Biodiversity Monitoring & Ecological Reporting Platform
 
 Next.js web application for KESTREL — complete interface for biodiversity reporting, geospatial mapping with heatmaps, analytics dashboards, document management with approval workflow, community forums, and role-based admin management.
 
 ---
 
-## Tech Stack
+ Tech Stack
 
 | Layer         | Technology                             |
 | ------------- | -------------------------------------- |
@@ -21,7 +21,7 @@ Next.js web application for KESTREL — complete interface for biodiversity repo
 
 ---
 
-## Project Structure
+Project Structure
 
 ```
 src/
@@ -60,9 +60,9 @@ src/
 
 ---
 
-## Getting Started
+Getting Started
 
-### Prerequisites
+Prerequisites
 
 - Node.js 20+
 - KESTREL Backend running on `http://localhost:3001`
