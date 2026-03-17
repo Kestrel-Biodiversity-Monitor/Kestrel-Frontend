@@ -99,6 +99,15 @@ npm start
 npx tsc --noEmit
 ```
 
+### Testing
+
+The project uses `Jest` combined with `React Testing Library` to ensure the reliability and quality of core UI components. Look inside the `src/components/__tests__` directory for the test files.
+
+```bash
+# Run unit tests
+npm run test
+```
+
 ---
 
 ## Pages
@@ -243,6 +252,24 @@ Handcrafted CSS design system in `globals.css`.
 | Variable | Required | Description |
 |----------|:--------:|-------------|
 | `NEXT_PUBLIC_API_URL` | ✅ | Backend API base URL (e.g. `http://localhost:3001/api`) |
+
+---
+
+## Contributions & System Modules
+
+### My Contributions
+Focused on **Security and User System Modules** — providing essential system support that powers the core application. While the core data architecture and AI analytics handle the primary domain logic, these modules ensure the platform remains secure, stable, and user-friendly.
+
+Contributions include:
+- **Authentication & Authorization**: Handled full secure login/registration flows.
+- **User Management**: Configured profiles and access control functionality.
+- **Alerts & Notifications**: Implemented system-wide active alerts and user notifications.
+- **Security & Access Control**: 
+  - JWT authorization and token lifecycle.
+  - Role-Based Access Control (RBAC).
+  - Express backend rate limiting.
+- **System APIs**: Developed and integrated essential endpoints such as `/auth`, `/profile`, and `/notifications`.
+- **UI Components**: Built and wired **Dashboard KPI cards** for high-level data summaries.
 
 ---
 

@@ -14,9 +14,15 @@ ChartJS.register(
     Title, Tooltip, Legend, Filler
 );
 
+/**
+ * Props defining the configuration for the ChartWidget component.
+ */
 interface Props {
+    /** The type of chart to display: "bar", "line", or "doughnut". */
     type: "bar" | "line" | "doughnut";
+    /** Array of string labels for the X-axis (or sections of the doughnut). */
     labels: string[];
+    /** Array of datasets formatted for Chart.js. */
     datasets: {
         label: string;
         data: number[];
@@ -26,7 +32,9 @@ interface Props {
         fill?: boolean;
         tension?: number;
     }[];
+    /** Optional title to display above the chart. */
     title?: string;
+    /** Optional height (in pixels) for the chart container. Default is 280. */
     height?: number;
 }
 
@@ -37,6 +45,13 @@ const PALETTE = [
     "#b45309", "#92400e", "#d97706",
 ];
 
+/**
+ * ChartWidget is a responsive, reusable component that wraps react-chartjs-2.
+ * It provides "bar", "line", and "doughnut" chart types using a standard color palette.
+ *
+ * @param {Props} props - Configuration for the chart (type, labels, datasets, etc.)
+ * @returns React component wrapping a Chart.js instance.
+ */
 export default function ChartWidget({ type, labels, datasets, title, height = 280 }: Props) {
     const enriched = datasets.map((ds, i) => ({
         ...ds,

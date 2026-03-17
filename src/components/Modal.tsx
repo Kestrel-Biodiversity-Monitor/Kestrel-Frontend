@@ -3,15 +3,34 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 
+/**
+ * Props for the Modal component.
+ */
 interface Props {
+    /** Determines if the modal is currently visible. */
     isOpen: boolean;
+    /** Callback function triggered when the modal requests to be closed (e.g., clicking X, pressing Esc, or clicking outside). */
     onClose: () => void;
+    /** The title displayed in the modal header. */
     title: string;
+    /** The content rendered inside the modal body. */
     children: ReactNode;
+    /** Optional content rendered in the modal footer. */
     footer?: ReactNode;
+    /** Size preset for the modal, dictating its maximum width. Default is "md". */
     size?: "sm" | "md" | "lg";
 }
 
+/**
+ * A reusable portal-based Modal component.
+ * Features:
+ * - Uses React portals to render outside the main DOM hierarchy (appended to document.body).
+ * - Close-on-escape built-in.
+ * - Backdrop click to close.
+ * 
+ * @param {Props} props - Modal configuration.
+ * @returns React portal containing the modal, or null if closed/SSR.
+ */
 export default function Modal({ isOpen, onClose, title, children, footer, size = "md" }: Props) {
     useEffect(() => {
         const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
