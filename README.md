@@ -178,6 +178,7 @@ Thin wrapper around Chart.js. Supports `bar`, `line`, and `doughnut` chart types
 />
 ```
 
+Kestral is Uniquely Positioned to identify different type of Species
 Kestral is a Biodiversity App
 
 ### `DataTable`
