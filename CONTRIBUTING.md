@@ -16,7 +16,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### Installation & Local Setup
 
-1. **Fork the repository** on GitHub.
+1. **Fork the repository** on GitHub.  
 2. **Clone your fork** locally:
    ```bash
    git clone https://github.com/YOUR_USERNAME/kestrel-frontend.git
