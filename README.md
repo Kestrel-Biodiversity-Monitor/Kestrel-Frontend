@@ -8,16 +8,16 @@ Next.js web application for KESTREL — complete interface for biodiversity repo
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript 5 |
-| Styling | Vanilla CSS + Custom Design System |
-| HTTP Client | Axios (with JWT interceptors) |
-| Maps | Leaflet + leaflet.heat (heatmap layer) |
-| Charts | Chart.js + react-chartjs-2 |
-| Notifications | react-toastify |
-| Auth State | React Context API |
+| Layer         | Technology                             |
+| ------------- | -------------------------------------- |
+| Framework     | Next.js 16 (App Router)                |
+| Language      | TypeScript 5                           |
+| Styling       | Vanilla CSS + Custom Design System     |
+| HTTP Client   | Axios (with JWT interceptors)          |
+| Maps          | Leaflet + leaflet.heat (heatmap layer) |
+| Charts        | Chart.js + react-chartjs-2             |
+| Notifications | react-toastify                         |
+| Auth State    | React Context API                      |
 
 ---
 
@@ -63,6 +63,7 @@ src/
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 20+
 - KESTREL Backend running on `http://localhost:3001`
 
@@ -81,6 +82,7 @@ cp .env.example .env.local
 ```
 
 `.env.local`:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
 ```
@@ -112,44 +114,46 @@ npm run test
 
 ## Pages
 
-| Route | Access | Description |
-|-------|:------:|-------------|
-| `/login` | Public | Email + password sign-in |
-| `/register` | Public | Account creation with organisation field |
-| `/forgot-password` | Public | Email reset request |
-| `/reset-password` | Public | Token-based new password form |
-| `/dashboard` | ✅ All | Stat cards, map (markers/heatmap), charts, alerts, animal-wise table |
-| `/documents` | ✅ All | Approved docs for users; officers see own uploads + can upload |
-| `/officer` | ✅ Officer+ | Upload documents, bulk CSV, view my submissions |
-| `/report` | ✅ All | Field Survey (map picker + image), Community Report, Bulk CSV |
-| `/analytics` | ✅ All | Species distribution, trends, conservation, regions, animal-wise table |
-| `/admin` | ✅ Admin | Reports, users, role requests, species CRUD, document approval |
-| `/forum` | ✅ All | Community posts with categories, comments, upvoting |
-| `/profile` | ✅ All | Edit profile, avatar upload, officer role request, account stats |
+| Route              |   Access    | Description                                                            |
+| ------------------ | :---------: | ---------------------------------------------------------------------- |
+| `/login`           |   Public    | Email + password sign-in                                               |
+| `/register`        |   Public    | Account creation with organisation field                               |
+| `/forgot-password` |   Public    | Email reset request                                                    |
+| `/reset-password`  |   Public    | Token-based new password form                                          |
+| `/dashboard`       |   ✅ All    | Stat cards, map (markers/heatmap), charts, alerts, animal-wise table   |
+| `/documents`       |   ✅ All    | Approved docs for users; officers see own uploads + can upload         |
+| `/officer`         | ✅ Officer+ | Upload documents, bulk CSV, view my submissions                        |
+| `/report`          |   ✅ All    | Field Survey (map picker + image), Community Report, Bulk CSV          |
+| `/analytics`       |   ✅ All    | Species distribution, trends, conservation, regions, animal-wise table |
+| `/admin`           |  ✅ Admin   | Reports, users, role requests, species CRUD, document approval         |
+| `/forum`           |   ✅ All    | Community posts with categories, comments, upvoting                    |
+| `/profile`         |   ✅ All    | Edit profile, avatar upload, officer role request, account stats       |
 
 ---
 
 ## Role-Based Access
 
-| Feature | User | Officer | Admin |
-|---------|:----:|:-------:|:-----:|
-| View approved documents | ✅ | ✅ | ✅ |
-| Upload documents / CSV | ❌ | ✅ | ✅ |
-| Submit field reports | ✅ | ✅ | ✅ |
-| View Officer Panel (`/officer`) | ❌ | ✅ | ✅ |
-| Approve / reject documents | ❌ | ❌ | ✅ |
-| Approve / reject reports | ❌ | ❌ | ✅ |
-| Manage users & roles | ❌ | ❌ | ✅ |
-| Access Admin Panel (`/admin`) | ❌ | ❌ | ✅ |
+| Feature                         | User | Officer | Admin |
+| ------------------------------- | :--: | :-----: | :---: |
+| View approved documents         |  ✅  |   ✅    |  ✅   |
+| Upload documents / CSV          |  ❌  |   ✅    |  ✅   |
+| Submit field reports            |  ✅  |   ✅    |  ✅   |
+| View Officer Panel (`/officer`) |  ❌  |   ✅    |  ✅   |
+| Approve / reject documents      |  ❌  |   ❌    |  ✅   |
+| Approve / reject reports        |  ❌  |   ❌    |  ✅   |
+| Manage users & roles            |  ❌  |   ❌    |  ✅   |
+| Access Admin Panel (`/admin`)   |  ❌  |   ❌    |  ✅   |
 
 ---
 
 ## Key Components
 
 ### `Sidebar`
+
 Role-aware navigation. Shows **Documents** and **Submit Report** for all roles. Shows **Officer Panel** for officer and admin. Shows **Admin Panel** for admin only. Displays the user's role badge, contribution score, and a sign-out button.
 
 ### `ProtectedRoute`
+
 Wraps pages that require authentication. Redirects unauthenticated users to `/login`. Accepts an optional `requiredRole` prop (`"admin"` or `"officer"`) to restrict access. Redirects unauthorized roles to `/dashboard`.
 
 ```tsx
@@ -159,9 +163,11 @@ Wraps pages that require authentication. Redirects unauthenticated users to `/lo
 ```
 
 ### `MapPicker`
+
 SSR-safe Leaflet map. Click anywhere to drop a pin. Emits `(lat, lng)` via `onLocationSelect` callback. Uses CartoDB light tile layer.
 
 ### `ChartWidget`
+
 Thin wrapper around Chart.js. Supports `bar`, `line`, and `doughnut` chart types with the platform's earth-tone colour palette.
 
 ```tsx
@@ -172,7 +178,10 @@ Thin wrapper around Chart.js. Supports `bar`, `line`, and `doughnut` chart types
 />
 ```
 
+Kestral is a Biodiversity App
+
 ### `DataTable`
+
 Generic fully-typed table. Accepts a `columns` array with optional `render` callbacks for custom cell content.
 
 ---
@@ -234,14 +243,14 @@ Handcrafted CSS design system in `globals.css`.
 
 **Colour Palette**
 
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `--color-forest` | `#1a4731` | Primary brand, sidebar, buttons |
-| `--color-forest-light` | `#2d7a55` | Hover states, accents |
-| `--color-forest-pale` | `#d1eadc` | Highlighted backgrounds |
-| `--color-slate` | `#0f1e2d` | Sidebar background |
-| `--surface-bg` | `#f5f7f5` | Page background |
-| `--surface-card` | `#ffffff` | Card surface |
+| Token                  | Hex       | Usage                           |
+| ---------------------- | --------- | ------------------------------- |
+| `--color-forest`       | `#1a4731` | Primary brand, sidebar, buttons |
+| `--color-forest-light` | `#2d7a55` | Hover states, accents           |
+| `--color-forest-pale`  | `#d1eadc` | Highlighted backgrounds         |
+| `--color-slate`        | `#0f1e2d` | Sidebar background              |
+| `--surface-bg`         | `#f5f7f5` | Page background                 |
+| `--surface-card`       | `#ffffff` | Card surface                    |
 
 **Component classes** — `.card`, `.btn`, `.form-input`, `.badge`, `.data-table`, `.modal-overlay`, `.stat-card`, `.nav-item`, `.auth-card`, `.tabs`, `.alert-banner`
 
@@ -249,22 +258,24 @@ Handcrafted CSS design system in `globals.css`.
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|:--------:|-------------|
-| `NEXT_PUBLIC_API_URL` | ✅ | Backend API base URL (e.g. `http://localhost:3001/api`) |
+| Variable              | Required | Description                                             |
+| --------------------- | :------: | ------------------------------------------------------- |
+| `NEXT_PUBLIC_API_URL` |    ✅    | Backend API base URL (e.g. `http://localhost:3001/api`) |
 
 ---
 
 ## Contributions & System Modules
 
 ### My Contributions
+
 Focused on **Security and User System Modules** — providing essential system support that powers the core application. While the core data architecture and AI analytics handle the primary domain logic, these modules ensure the platform remains secure, stable, and user-friendly.
 
 Contributions include:
+
 - **Authentication & Authorization**: Handled full secure login/registration flows.
 - **User Management**: Configured profiles and access control functionality.
 - **Alerts & Notifications**: Implemented system-wide active alerts and user notifications.
-- **Security & Access Control**: 
+- **Security & Access Control**:
   - JWT authorization and token lifecycle.
   - Role-Based Access Control (RBAC).
   - Express backend rate limiting.
